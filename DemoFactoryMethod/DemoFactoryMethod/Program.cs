@@ -37,6 +37,46 @@ namespace DemoFactoryMethod
             }
         }
 
+        public enum CarType
+        {
+            HONDA,
+            KIA,
+            TOYOTA
+        }
+
+        public interface ICarFactory
+        {
+            ICar viewCar(CarType carType);
+        }
+
+        public class CarFactory : ICarFactory
+        {
+            public ICar viewCar(CarType carType)
+            {
+                ICar car;
+
+                switch (carType)
+                {
+                    case CarType.HONDA:
+                        car = new Honda();
+                        car.view();
+                        return car;
+                    case CarType.KIA:
+                        car = new KiA();
+                        car.view();
+                        return car;
+                    case CarType.TOYOTA:
+                        car = new Toyota();
+                        car.view();
+                        return car;
+                    default:
+                        car = new Honda();
+                        car.view();
+                        return car;
+                }                             
+            }
+        }
+
 
         //public class AgencyCar
         //{
@@ -56,40 +96,18 @@ namespace DemoFactoryMethod
         //        toyota.view();
         //    }
         //}
-       
+
+
         public class AgencyCar
         {
             public void viewCar()
             {
                 CarFactory carFactory = new CarFactory();
-                carFactory.viewCar("HONDA");
-                carFactory.viewCar("KIA");
-                carFactory.viewCar("TOYOTA");
+                carFactory.viewCar(CarType.HONDA);
+                carFactory.viewCar(CarType.KIA);
+                carFactory.viewCar(CarType.TOYOTA);
             }
 
-        }
-      
-        public class CarFactory
-        {
-            public void viewCar(string carType)
-            {
-                ICar car;
-                if (carType == "HONDA")
-                {
-                    car = new Honda();
-                    car.view();
-                }
-                else if (carType == "KIA")
-                {
-                    car = new KiA();
-                    car.view();
-                }
-                else if (carType == "TOYOTA")
-                {
-                    car = new Toyota();
-                    car.view();
-                }
-            }
         }
         static void Main(string[] args)
         {
