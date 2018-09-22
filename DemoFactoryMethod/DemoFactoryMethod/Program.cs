@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 namespace DemoFactoryMethod
 {
     class Program
-    {     
+    {
         public interface ICar
         {
             void view();
         }
-  
+
         public class Honda : ICar
-        {         
-        public void view()
+        {
+            public void view()
             {
                 Console.WriteLine("Honda view");
             }
         }
-     
+
         public class Toyota : ICar
         {
             public void view()
@@ -28,7 +28,7 @@ namespace DemoFactoryMethod
                 Console.WriteLine("Toyota view");
             }
         }
-       
+
         public class KiA : ICar
         {
             public void view()
@@ -73,12 +73,12 @@ namespace DemoFactoryMethod
                         car = new Honda();
                         car.view();
                         return car;
-                }                             
+                }
             }
         }
 
 
-        //public class AgencyCar
+        //public class Client
         //{
         //    public void viewHonda()
         //    {
@@ -97,15 +97,14 @@ namespace DemoFactoryMethod
         //    }
         //}
 
-
-        public class AgencyCar
+        public class Client
         {
             public void viewCar()
             {
-                CarFactory carFactory = new CarFactory();
-                carFactory.viewCar(CarType.HONDA);
-                carFactory.viewCar(CarType.KIA);
-                carFactory.viewCar(CarType.TOYOTA);
+                CarFactory car = new CarFactory();
+                car.viewCar(CarType.HONDA);
+                car.viewCar(CarType.KIA);
+                car.viewCar(CarType.TOYOTA);
             }
 
         }
@@ -114,8 +113,8 @@ namespace DemoFactoryMethod
             // The code provided will print ‘Hello World’ to the console.
             // Press Ctrl+F5 (or go to Debug > Start Without Debugging) to run your app.
 
-            AgencyCar agency = new AgencyCar();
-            agency.viewCar();
+            Client client = new Client();
+            client.viewCar();
             Console.ReadKey();
 
             // Go to http://aka.ms/dotnet-get-started-console to continue learning how to build a console app! 
