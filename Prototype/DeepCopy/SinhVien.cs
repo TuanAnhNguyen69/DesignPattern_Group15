@@ -40,9 +40,12 @@ namespace DeepCopy
 
         public object Clone()
         {
+            /*
             SinhVien sv = (SinhVien)this.MemberwiseClone();
             sv.SetKhoa((Khoa)this.GetKhoa().Clone());
             return sv;
+            */
+            return new SinhVien(this.mssv, (Khoa)this.GetKhoa().Clone());
         }
 
         /*

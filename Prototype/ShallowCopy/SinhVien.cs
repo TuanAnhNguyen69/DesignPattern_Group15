@@ -41,8 +41,8 @@ namespace ShallowCopy
 
         public object Clone()
         {
-            //return new SinhVien(this.mssv, this.khoa);
-            return this.MemberwiseClone();
+            //return this.MemberwiseClone();
+            return new SinhVien(this.mssv, this.khoa);
         }
 
         /*
