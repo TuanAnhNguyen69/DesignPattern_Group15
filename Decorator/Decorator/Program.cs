@@ -75,12 +75,12 @@ namespace Decorator
         public override void ShowIngredient()
         {
             Console.WriteLine("\nMilktea ------ ");
-            Console.WriteLine(" Name: {0}", name);
-            Console.WriteLine(" Toping: {0}", topping);
+            Console.WriteLine("Name: {0}", name);
+            Console.WriteLine("Toping: {0}", topping);
             Console.WriteLine("Ingredients:");
             foreach (string ingredient in Ingredients)
             {
-                Console.WriteLine("\n {0}", ingredient);
+                Console.WriteLine("\n{0}", ingredient);
             }
         }
     }
@@ -92,9 +92,7 @@ namespace Decorator
     /// </summary>
 
     class Machiato : Beverage
-
     {
-
         // Constructor
 
         public Machiato(string name, List<string> ingredients)
@@ -106,11 +104,11 @@ namespace Decorator
         public override void ShowIngredient()
         {
             Console.WriteLine("\nMachiato ------ ");
-            Console.WriteLine(" Name: {0}", name);
+            Console.WriteLine("Name: {0}", name);
             Console.WriteLine("Ingredients:");
             foreach (string ingredient in Ingredients)
             {
-                Console.WriteLine("\n {0}", ingredient);
+                Console.WriteLine("\n{0}", ingredient);
             }
         }
     }
