@@ -2,7 +2,7 @@
 
 namespace ShallowCopy
 {
-    class Khoa
+    class Khoa : ICloneable
     {
         private string tenKhoa;
         private string phong;
@@ -31,6 +31,11 @@ namespace ShallowCopy
         {
             tenKhoa = _tenKhoa;
             phong = _phong;
-        } 
+        }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

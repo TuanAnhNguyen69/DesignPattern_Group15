@@ -39,10 +39,8 @@ namespace DeepCopy
 
         public object Clone()
         {
-            //Khoa khoa = new Khoa(this.tenKhoa, this.phong);
-            //return khoa;
-            //return new Khoa(this.tenKhoa, this.phong);
-            return this.MemberwiseClone();
+            //return this.MemberwiseClone();
+            return new Khoa(this.tenKhoa, this.phong);  
         }
     }
 }
