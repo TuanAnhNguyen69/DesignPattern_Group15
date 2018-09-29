@@ -37,6 +37,26 @@ namespace DemoFactoryMethod
             }
         }
 
+
+        //public class Client
+        //{
+        //    public void viewHonda()
+        //    {
+        //        Honda honda = new Honda();
+        //        honda.view();
+        //    }
+        //    public void viewNexus()
+        //    {
+        //        KiA kia = new KiA();
+        //        kia.view();
+        //    }
+        //    public void viewToyota()
+        //    {
+        //        Toyota toyota = new Toyota();
+        //        toyota.view();
+        //    }
+        //}
+
         public enum CarType
         {
             HONDA,
@@ -76,26 +96,6 @@ namespace DemoFactoryMethod
                 }
             }
         }
-
-
-        //public class Client
-        //{
-        //    public void viewHonda()
-        //    {
-        //        Honda honda = new Honda();
-        //        honda.view();
-        //    }
-        //    public void viewNexus()
-        //    {
-        //        KiA kia = new KiA();
-        //        kia.view();
-        //    }
-        //    public void viewToyota()
-        //    {
-        //        Toyota toyota = new Toyota();
-        //        toyota.view();
-        //    }
-        //}
 
         public class Client
         {
