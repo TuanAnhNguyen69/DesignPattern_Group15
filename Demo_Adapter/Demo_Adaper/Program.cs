@@ -1,67 +1,84 @@
 ﻿using System;
 
-namespace DoFactory.GangOfFour.Adapter.Structural
+namespace DesignPattern.Adapter
 {
+    // giả sử ban đầu có cách thanh toán OldTransfer
 
-    interface ITarget
-    {
-        void Request_A();
-        void Request_B();
-    }
-
-
-    class Adapter : ITarget
-    {
-        private Adaptee _adaptee = new Adaptee();
-
-        public void Request_A()
-        {           
-            _adaptee.Request_A_Real();
-        }
-        public void Request_B()
-        {           
-            _adaptee.Request_B_Real();
-        }
-    }
-
-    //class Adapter : Adaptee, ITarget
-    //{            
-    //    public void Request_A()
+    //class OldTransfer
+    //{
+    //    public void Pay()
     //    {
-    //        Request_A_Real();
+    //        Console.WriteLine("Thanh toán cũ...");
     //    }
-
-    //    public void Request_B()
-    //    {
-    //        Request_B_Real();
-    //    }   
     //}
 
-
-    class Adaptee
+    // Một vài năm sau ta có cách thanh toán mới là NewTransfer
+    class NewTransferAdaptee
     {
-        public void Request_A_Real()
+        public void NewPay()
         {
-            Console.WriteLine("Reponse from Request_A_Real() of Adaptee");
+            Console.WriteLine("Thanh toán mới");
         }
-        public void Request_B_Real()
+        public void Function_Two()
         {
-            Console.WriteLine("Reponse from Request_B_Real() of adaptee");
+            Console.WriteLine("Do some thing 2");
         }
         public void Funtion_Three()
         {
-            // do some thing
+            Console.WriteLine("Do some thing 3");
+        }
+    }
+    
+    interface ITransferTarget
+    {
+        void Pay();      
+       
+    }
+
+    class OldTransfer : ITransferTarget
+    {
+        public void Pay()
+        {
+            Console.WriteLine("Thanh toán cũ...");
         }
     }
 
-    
+
+    class OldTransFerToNewTransferAdapter : ITransferTarget
+    {
+        private NewTransferAdaptee _adaptee = new NewTransferAdaptee();
+
+        public void Pay()
+        {
+            _adaptee.NewPay();
+        }
+    }
+
+    //class OldTransFerToNewTransferAdapter : NewTransferAdaptee, ITransferTarget
+    //{
+    //    public void Pay()
+    //    {
+    //        NewPay();
+    //    }
+    //}
+
+    class UserClient
+    {
+        public void Pay(ITransferTarget itransferTarget)
+        {
+            itransferTarget.Pay();
+        }
+    }
+ 
     class MainApp
     {     
         static void Main()
-        {       
-            ITarget target = new Adapter();
-            target.Request_A();
-            target.Request_B();
+        {
+            ITransferTarget oldTranfer = new OldTransfer();           
+            ITransferTarget target = new OldTransFerToNewTransferAdapter();
+
+            UserClient user = new UserClient();
+            user.Pay(target);
          
             Console.ReadKey();
         }
