@@ -23,15 +23,14 @@ namespace BridgePattern
             message.MessageSender = sms;
             message.Send();
 
-            UserMessage usermsg = new UserMessage();
-            usermsg.Subject = "Test Message";
-            usermsg.Body = "Hi, This is a Test Message";
-            usermsg.UserComments = "I hope you are well";
+            //Message usermsg = new UserMessage();
+            //usermsg.Subject = "Test Message";
+            //usermsg.Body = "Hi, This is a Test Message";          
 
-            usermsg.MessageSender = email;
-            usermsg.Send();
-            usermsg.MessageSender = sms;          
-            usermsg.Send();
+            //usermsg.MessageSender = email;
+            //usermsg.Send();
+            //usermsg.MessageSender = sms;          
+            //usermsg.Send();
 
             Console.ReadKey();
         }
