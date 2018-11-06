@@ -58,14 +58,10 @@ namespace Command
     // invoker
     class RemoteControl
     {
-        private Queue commandQueue = new Queue();       
+        private List<Command> commandQueue = new List<Command>();       
         public void pressButton(Command command)
         {
-            commandQueue.Enqueue(command);
-            //foreach(var item in commandQueue)
-            //{
-                
-            //}
+            commandQueue.Add(command);        
             command.execute();
         }
     }
