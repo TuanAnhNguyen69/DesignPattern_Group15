@@ -46,7 +46,7 @@ namespace DesignPattern.Adapter
 
     class OldTransFerToNewTransferAdapter : ITransferTarget
     {
-        private NewTransferAdaptee _adaptee = new NewTransferAdaptee();
+        private NewTransferAdaptee _adaptee = new NewTransferAdaptee();     
 
         public void Pay()
         {
