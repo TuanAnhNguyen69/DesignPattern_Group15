@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ShallowCopy
 {
-    class SinhVien : ICloneable
+    class SinhVien : IClone
     {
         private int mssv;
         private Khoa khoa;

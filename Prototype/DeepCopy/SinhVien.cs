@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DeepCopy
 {
-    class SinhVien : ICloneable
+    class SinhVien : IClone
     {
         private int mssv;
         private Khoa khoa;

@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace ShallowCopy
 {
+    interface IClone
+    {
+        object Clone();
+    }
     class Program
     {
         static void Main(string[] args)
