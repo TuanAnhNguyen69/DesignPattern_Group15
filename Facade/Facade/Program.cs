@@ -10,72 +10,87 @@ namespace Facade
     {
         static void Main(string[] args)
         {
-            ShapeMaker shapeMaker = new ShapeMaker();
+            Computer computer = new Computer();
+            Human human = new Human();
+            ComputerFacade facade = new ComputerFacade(computer, human);
+            facade.TurnOn();
 
-            shapeMaker.drawCircle();
-            shapeMaker.drawRectangle();
-            shapeMaker.drawSquare();
+            facade.TurnOff();
 
             Console.ReadKey();
         }
     }
 
-    public interface Shape
+    class Computer
     {
-        void draw();
+        public void GetElectric()
+        {
+            Console.WriteLine("Plugin, ");
+        }
+
+        public void ShowLoadingScreen()
+        {
+            Console.WriteLine("Loading, ");
+        }
+
+        public void Login()
+        {
+            Console.WriteLine("Logging in, ");
+        }
+
+        public void CloseEverything()
+        {
+            Console.WriteLine("Closing, ");
+        }
+
+        public void TurnOffScreen()
+        {
+            Console.WriteLine("Screen Off, ");
+        }
+
+        public void UnPlug()
+        {
+            Console.WriteLine("UnPlug, ");
+        }
     }
 
-    public class Rectangle : Shape
+    class Human
     {
-
-        public void draw()
+        public void PressPowerButton()
         {
-            Console.WriteLine("Rectangle::draw()");
+            Console.WriteLine("Press PowerButton, ");
         }
     }
 
-    public class Square : Shape
+    class ComputerFacade
     {
+        private Computer computer;
+        private Human human;
 
-       public void draw()
+        public ComputerFacade(Computer computer, Human human)
         {
-            Console.WriteLine("Square::draw()");
-        }
-    }
-
-    public class Circle : Shape
-    {
-
-       public void draw()
-        {
-            Console.WriteLine("Circle::draw()");
-        }
-    }
-
-    public class ShapeMaker
-    {
-        private Shape circle;
-        private Shape rectangle;
-        private Shape square;
-
-        public ShapeMaker()
-        {
-            circle = new Circle();
-            rectangle = new Rectangle();
-            square = new Square();
+            this.human = human;
+            this.computer = computer;
         }
 
-        public void drawCircle()
+        public void TurnOn()
         {
-            circle.draw();
+            Console.WriteLine("Turn on ============");
+
+            this.computer.GetElectric();
+            this.human.PressPowerButton();
+            this.computer.ShowLoadingScreen();
+            this.computer.Login();
         }
-        public void drawRectangle()
+
+        public void TurnOff()
         {
-            rectangle.draw();
-        }
-        public void drawSquare()
-        {
-            square.draw();
+            Console.WriteLine("Turn off ============");
+
+            this.human.PressPowerButton();
+            this.computer.CloseEverything();
+            this.computer.TurnOffScreen();
+            this.computer.UnPlug();
         }
     }
 }
