@@ -9,25 +9,29 @@ namespace Mediator
 
     interface IChatRoomMediator
     {
-        void SendMessage(User user, String message);
+        void SendMessage(Participant user, String message);
     }
 
     class ChatRoom : IChatRoomMediator
     {
-        public void SendMessage(User user, string message)
+        public void SendMessage(Participant user, string message)
         {
-            Console.WriteLine(user.userName + ": " + message);
+            Console.WriteLine(user.name + ": " + message);
         }
     }
 
-    class User
+    class Participant
+    {
+       public String name;
+    }
+
+    class User : Participant
     {
         protected IChatRoomMediator chatRoom;
-        public String userName;
 
-    public User(IChatRoomMediator chatRoom, String userName)
+        public User(IChatRoomMediator chatRoom, String userName)
         {
-            this.userName = userName;
+            this.name = userName;
             this.chatRoom = chatRoom;
         }
 
@@ -37,16 +41,32 @@ namespace Mediator
         }
     }
 
+    class Bot : Participant
+    {
+        protected IChatRoomMediator chatRoom;
+
+        public Bot(IChatRoomMediator chatRoom, String botName)
+        {
+            this.name = botName;
+            this.chatRoom = chatRoom;
+        }
+
+        public void Send(String message)
+        {
+            chatRoom.SendMessage(this, message + "Auto repplied!");
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
             ChatRoom chatRoom = new ChatRoom();
             User userA = new User(chatRoom, "A");
-            User userB = new User(chatRoom, "B");
+            Bot bot = new Bot(chatRoom, "B");
 
             userA.Send("Hello!");
-            userB.Send("Hi!");
+            bot.Send("Hi!");
             Console.ReadLine();
         }
     }
